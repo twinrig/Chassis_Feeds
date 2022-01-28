@@ -1,7 +1,7 @@
 -- ===========================================================================================
 --
 --  FILENAME
---      Create_feed_item.sql
+--      Create_transport_type.sql
 --
 --  DATE CREATED
 --      January 27, 2022  9:50 AM
@@ -19,17 +19,15 @@
 create schema if not exists chassis;
 
 
-drop table if exists chassis.feed_item;
+drop table if exists chassis.transport_type;
 
-create table if not exists chassis.feed_item
+create table if not exists chassis.transport_type
 (
     id uuid primary key default (uuid_generate_v4()),
-    name varchar not null,
-    transport_type_id uuid,
-    transport_direction_id uuid,
-    path varchar,
-    source_identifier_column_name varchar,
-    source_identifier_lookup_type_id uuid,
-    file_format_id uuid,
+    name varchar,
+    description varchar
 )
 
+insert into chassis.transport_type (name, description)
+    values ('ftp','Uses the File Transfer Protocol (RFC 959)'),
+           ('sftp','Uses the SSH File Transfer Protocol (RFC 4251 Et al.)');

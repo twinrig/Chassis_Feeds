@@ -1,7 +1,7 @@
 -- ===========================================================================================
 --
 --  FILENAME
---      Create_feed_item.sql
+--      Create_transport_directionsql
 --
 --  DATE CREATED
 --      January 27, 2022  9:50 AM
@@ -18,18 +18,15 @@
 -- Check for schema
 create schema if not exists chassis;
 
+drop table if exists chassis.transport_direction;
 
-drop table if exists chassis.feed_item;
-
-create table if not exists chassis.feed_item
+create table if not exists chassis.transport_direction
 (
     id uuid primary key default (uuid_generate_v4()),
-    name varchar not null,
-    transport_type_id uuid,
-    transport_direction_id uuid,
-    path varchar,
-    source_identifier_column_name varchar,
-    source_identifier_lookup_type_id uuid,
-    file_format_id uuid,
+    name varchar,
+    description varchar
 )
 
+insert into chassis.transport_direction (name, description)
+    values ('Incoming', 'External feed coming into Chassis'),
+           ('OutGoing', 'Feed going out from Chassis to external destination');

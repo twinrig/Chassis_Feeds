@@ -1,13 +1,13 @@
 -- ===========================================================================================
 --
 --  FILENAME
---      Create_feed_item.sql
+--      Create_file_format.sql
 --
 --  DATE CREATED
---      January 27, 2022  9:50 AM
+--      January 28, 2022  8:35 AM
 --
 --  CREATED BY
---      chammer
+--      chammer@CarsForSale.local
 --
 --  DESCRIPTION
 --
@@ -18,18 +18,11 @@
 -- Check for schema
 create schema if not exists chassis;
 
+drop table if exists  chassis.file_format
 
-drop table if exists chassis.feed_item;
-
-create table if not exists chassis.feed_item
+create table if not exists chassis.file_format
 (
     id uuid primary key default (uuid_generate_v4()),
-    name varchar not null,
-    transport_type_id uuid,
-    transport_direction_id uuid,
-    path varchar,
-    source_identifier_column_name varchar,
-    source_identifier_lookup_type_id uuid,
-    file_format_id uuid,
+    name varchar,
+    description varchar
 )
-
