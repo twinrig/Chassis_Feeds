@@ -24,5 +24,8 @@ create table if not exists chassis.file_format
 (
     id uuid primary key default (uuid_generate_v4()),
     name varchar,
-    description varchar
+    description varchar,
+    field_separator varchar,
+    record_separator varchar,
+    text_indicator varchar
 )
